@@ -6,7 +6,7 @@ class Chatbot {
         this.sendButton = document.getElementById('sendMessage');
         this.chatInput = document.getElementById('chatInput');
         this.chatMessages = document.getElementById('chatMessages');
-        this.apiKey = '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'; 
+        this.apiKey = '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'; 
         this.apiUrl = 'https://openrouter.ai/api/v1/chat/completions';
         this.hasInteracted = false;
 
