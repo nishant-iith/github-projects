@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Project Portfolio</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="theme-switch">
+        <input type="checkbox" id="theme-toggle">
+        <label for="theme-toggle">
+            <i class="fas fa-moon"></i>
+        </label>
+    </div>
+
+    <header>
+        <h1>My Projects</h1>
+        <p>Welcome to my project portfolio</p>
+    </header>
+
+    <div class="category-filter">
+        <button class="filter-btn active" data-category="all">All</button>
+        <button class="filter-btn" data-category="web">Web</button>
+        <button class="filter-btn" data-category="mobile">Mobile</button>
+        <button class="filter-btn" data-category="other">Other</button>
+    </div>
+
+    <div class="project-grid">
+        <div class="project-card" data-category="web">
+            <span class="tag">Web</span>
+            <h3>Resume/Bio Builder</h3>
+            <p>Resume or Bio Builder is a simple web application that allows users to create and customize their resumes or bios.</p>
+            <div class="project-actions">
+                <a href="https://nishant-iith.github.io/resume-builder/" class="project-link">View Project</a>
+                <button class="video-btn" data-video="assets/Insertion Sort Visualization.mp4" data-type="local">
+                    <i class="fas fa-play"></i> Watch Demo
+                </button>
+            </div>
+        </div>
+        <div class="project-card" data-category="web">
+            <span class="tag">Web</span>
+            <h3>Another Project</h3>
+            <p>Project description...</p>
+            <div class="project-actions">
+                <a href="#" class="project-link">View Project</a>
+                <button class="video-btn" data-video="Q1JdRUh1_98" data-type="youtube">
+                    <i class="fas fa-play"></i> Watch on YouTube
+                </button>
+            </div>
+        </div>
+        <div class="project-card">
+            <h3>Coming Soon</h3>
+            <p>Future project</p>
+            <a href="#" class="project-link disabled">In Development</a>
+        </div>
+        <!-- Add more project cards as needed -->
+    </div>
+
+    <div class="video-modal" id="videoModal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="video-container">
+                <!-- Local video player -->
+                <video id="videoPlayer" controls style="display: none;">
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <!-- YouTube embed -->
+                <iframe id="youtubePlayer" 
+                    style="display: none;"
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="contact-section">
+            <h2>Let's Connect</h2>
+            <div class="social-links">
+                <a href="https://github.com/yourusername" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:your.email@example.com" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <p>Feel free to reach out for collaborations or just a friendly hello!</p>
+        </div>
+    </footer>
+
+    <script src="scripts/app.js"></script>
+</body>
+</html>
