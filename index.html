@@ -89,6 +89,26 @@
         </div>
     </div>
 
+    <div class="chatbot-button" id="chatbotButton">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <h3>Chat with AI Assistant 🤖</h3>
+            <button class="close-chat" id="closeChat">&times;</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                Hello! I'm an AI assistant. How can I help you today? Feel free to ask me anything about these projects! 🤖
+            </div>
+        </div>
+        <div class="chat-input-container">
+            <input type="text" id="chatInput" placeholder="Ask AI anything...">
+            <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
     <footer>
         <div class="contact-section">
             <h2>Let's Connect</h2>
@@ -108,5 +128,6 @@
     </footer>
 
     <script src="scripts/app.js"></script>
+    <script src="scripts/chatbot.js"></script>
 </body>
 </html>
