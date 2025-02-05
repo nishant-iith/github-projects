@@ -19,15 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Improved dark mode toggle
+    // Modified theme initialization
     const themeToggle = document.getElementById('theme-toggle');
     
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        document.body.setAttribute('data-theme', savedTheme);
-        themeToggle.checked = savedTheme === 'dark';
-    }
+    // Set dark theme as default if no theme is saved
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.body.setAttribute('data-theme', savedTheme);
+    themeToggle.checked = savedTheme === 'dark';
 
     // Update theme toggle handler
     themeToggle.addEventListener('change', () => {
