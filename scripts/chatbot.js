@@ -6,9 +6,9 @@ class Chatbot {
         this.sendButton = document.getElementById('sendMessage');
         this.chatInput = document.getElementById('chatInput');
         this.chatMessages = document.getElementById('chatMessages');
-        this.apiKey = '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'; 
-        this.apiUrl = 'https://openrouter.ai/api/v1/chat/completions';
+        this.apiUrl = 'http://localhost:3000/api/chat';  // Update this URL in production
         this.hasInteracted = false;
+        this.conversationHistory = [];
 
         this.initializeEventListeners();
     }
@@ -64,23 +64,49 @@ class Chatbot {
     }
 
     async getAIResponse(message) {
-        const response = await fetch(this.apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${this.apiKey}`,
-            },
-            body: JSON.stringify({
-                messages: [{
-                    role: 'user',
-                    content: message
-                }],
-                model: 'openai/gpt-3.5-turbo',
-            })
-        });
+        try {
+            // Add message to conversation history
+            this.conversationHistory.push({
+                role: 'user',
+                content: message
+            });
 
-        const data = await response.json();
-        return data.choices[0].message.content;
+            const response = await fetch(this.apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    messages: this.conversationHistory,
+                    model: 'openai/gpt-3.5-turbo',
+                })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error('API Error:', errorData);
+                throw new Error(errorData.error?.message || 'API request failed');
+            }
+
+            const data = await response.json();
+            const botResponse = data.choices[0].message.content;
+            
+            // Add bot response to conversation history
+            this.conversationHistory.push({
+                role: 'assistant',
+                content: botResponse
+            });
+
+            // Keep conversation history manageable
+            if (this.conversationHistory.length > 10) {
+                this.conversationHistory = this.conversationHistory.slice(-10);
+            }
+
+            return botResponse;
+        } catch (error) {
+            console.error('Error in API call:', error);
+            throw new Error('Failed to get AI response: ' + error.message);
+        }
     }
 
     initialize() {
